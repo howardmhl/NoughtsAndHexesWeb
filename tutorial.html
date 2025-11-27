@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Noughts & Hexes – Tutorial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&family=Quicksand:wght@500;600&family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" href="index.apple-touch-icon.png">
+
+  <style>
+    :root {
+      --sky-top: #3440aa;
+      --sky-bottom: #4579c9;
+      --moon-yellow: #ffd83b;
+
+      --paper-bg: #f7e0c3;
+      --paper-border: #e2c59d;
+      --paper-text: #4f3a30;
+
+      --accent-gold: #c8903b;
+      --text-white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+
+      font-family: "Nunito", system-ui, sans-serif;
+      color: var(--text-white);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+    }
+
+    header.page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .game-title {
+      font-family: "Quicksand", sans-serif;
+      font-size: clamp(32px, 3.5vw, 40px);
+      letter-spacing: 0.07em;
+      text-transform: lowercase;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .moon-pill {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--moon-yellow);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.45);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .moon-pill::after {
+      content: "";
+      position: absolute;
+      inset: 15%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    section.section {
+      margin-bottom: 26px;
+      padding: 18px 20px 20px;
+      background: var(--paper-bg);
+      border: 1px solid var(--paper-border);
+      border-radius: 12px;
+      color: var(--paper-text);
+    }
+
+    section.section h2 {
+      margin: 0 0 10px;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-gold);
+    }
+
+    section.section p {
+      margin: 6px 0 10px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      font-size: 15px;
+    }
+
+    .list li {
+      margin: 6px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--accent-gold);
+      font-size: 12px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 16px;
+      margin-top: 12px;
+    }
+
+    .skill-name {
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 2px;
+      font-family: "Quicksand", sans-serif;
+    }
+
+    .skill {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .secret-hint {
+      font-family: "Fira Mono", monospace;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+      letter-spacing: 0.1em;
+      color: var(--paper-text);
+    }
+
+    .hidden-panel-text {
+      text-align: left;
+      font-size: 14px;
+    }
+
+    footer.page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      font-size: 14px;
+      color: var(--text-white);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--accent-gold);
+      color: #2d2230;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: 0.15s ease;
+    }
+
+    .btn:hover {
+      background: #f8c96a;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .section h2:not(:first-child) {
+      margin-top: 26px; 
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="page-header">
+      <div class="title-block">
+        <div class="game-title">Noughts &amp; Hexes</div>
+        <div class="subtitle">Quick guide to casting curses in Noughts & Hexes.</div>
+      </div>
+      <div class="moon-pill"></div>
+    </header>
+
+    <section class="section">
+    <h2>How to Play</h2>
+
+    <p>Noughts &amp; Hexes is a magical twist on noughts and crosses. Place tokens, and use skills to bend the board in your favour.</p>
+
+    <ul class="list">
+        <li><strong>Goal:</strong> make a line of five of your pieces.</li>
+        <li>Your pieces <strong>fade away after 14 turns</strong>, so plan carefully.</li>
+        <li>Each witch has a special skill that charges over time.</li>
+        <li>Use skills to disrupt, defend, or force tricky moves.</li>
+    </ul>
+
+    <ul class="list">
+        <li><strong>Tap a tile</strong> to place a piece.</li>
+        <li><strong>Tap your skill button</strong> to activate a spell.</li>
+    </ul>
+
+
+    <h2>Witches &amp; Skills</h2>
+    <p>Each colour represents a witch with her own signature spell:</p>
+
+    <div class="skills-grid">
+        <div class="skill">
+        <div class="skill-name">Pink Witch</div>
+        Convert one enemy piece.
+        </div>
+
+        <div class="skill">
+        <div class="skill-name">Blue Witch</div>
+        Protect a piece with a bubble shield.
+        </div>
+
+        <div class="skill">
+        <div class="skill-name">Yellow Witch</div>
+        Move any piece to an empty tile.
+        </div>
+
+        <div class="skill">
+        <div class="skill-name">Purple Witch</div>
+        Curse a piece so it jumps around.
+        </div>
+
+        <div class="skill">
+        <div class="skill-name">Red Witch</div>
+        Remove any piece completely.
+        </div>
+
+        <div class="skill">
+        <div class="skill-name">Orange Witch</div>
+        Force your opponent to play in a tile you choose.
+        </div>
+    </div>
+
+
+    <h2>Hidden Magic</h2>
+    <p class="hidden-panel-text">Some witches only appear to those who know the old spell.</p>
+    <p class="hidden-panel-text">On the title screen, try this:</p>
+
+    <p class="secret-hint">
+        UP UP DOWN DOWN LEFT RIGHT LEFT RIGHT B A
+    </p>
+    </section>
+
+    <footer class="page-footer">
+      <div>Ready to cast your first spell?</div>
+
+      <div class="btn-row">
+        <a href="index.html" class="btn">Back to Game</a>
+        <a href="https://github.com/howardmhl/NoughtsAndHexesWeb/" target="_blank" rel="noopener" class="btn btn-secondary">
+          GitHub
+        </a>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

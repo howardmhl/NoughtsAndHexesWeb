@@ -37,7 +37,7 @@
       /* Game canvas styling */
       #canvas {
         display: block;
-        background: #000000;               /* game backdrop */
+        background: #0c1325;               /* game backdrop */
         border-radius: 24px;               /* soft corners to match UI frame */
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
       }
@@ -111,6 +111,32 @@
         text-align: center;
         z-index: 1;
       }
+
+	  .tutorial-btn {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+
+		background: #f7e0c3;              /* parchment tone */
+		color: #4f3a30;
+		padding: 8px 16px;
+		border-radius: 10px;
+		font-family: "Quicksand", sans-serif;
+		font-weight: 600;
+		text-decoration: none;
+		font-size: 14px;
+		border: 1px solid #e2c59d;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+		transition: 0.15s ease;
+		z-index: 9999; /* stays above the game */
+		}
+
+		.tutorial-btn:hover {
+		background: #ffe8c6;
+		transform: translateY(-2px);
+	  }
+
     </style>
 
     <link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
@@ -119,6 +145,7 @@
   </head>
 
   <body>
+	<a href="tutorial.html" class="tutorial-btn">Tutorial</a>
     <canvas id="canvas">
       Your browser does not support the canvas tag.
     </canvas>
