@@ -8,14 +8,14 @@ Play in the browser, no download required.
 
 ## Artistic / Design Inspiration
 
-Visual tone and aesthetic inspired by:\
+Visual tone and aesthetic inspired by:
 **Ojamajo Doremi**
 
 ------------------------------------------------------------------------
 
 ## Credits & Attributions
 
-This project uses third-party assets licensed for use.\
+This project uses third-party assets licensed for use.
 
 ### Visual Effects
 
@@ -23,7 +23,7 @@ This project uses third-party assets licensed for use.\
 
 ### Sound Effects
 
--   **Helton Yan** --- *Pixel Combat*\
+-   **Helton Yan** --- *Pixel Combat*
 -   **JDSherbert** --- *Tabletop Games SFX*
 
 ### Music
