@@ -50,7 +50,7 @@ This project uses third-party assets licensed for use.\
 
 ------------------------------------------------------------------------
 
-## 📄 License
+## License
 
 This is a hobby / fan project.\
 Code is provided under *(MIT / GPL / proprietary --- specify if
