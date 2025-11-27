@@ -46,7 +46,7 @@ This project uses third-party assets licensed for use.\
 
 ## Play Now
 
-👉 *(https://howardmhl.github.io/NoughtsAndHexesWeb/)*
+*(https://howardmhl.github.io/NoughtsAndHexesWeb/)*
 
 ------------------------------------------------------------------------
 
