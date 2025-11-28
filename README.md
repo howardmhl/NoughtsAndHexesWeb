@@ -1,12 +1,10 @@
 # Noughts & Hexes
 
-*A twist on noughts and crosses.*
-
 Play in the browser, no download required.
 
 ------------------------------------------------------------------------
 
-## Artistic / Design Inspiration
+## Design Inspiration
 
 Visual tone and aesthetic inspired by:
 **Ojamajo Doremi**
